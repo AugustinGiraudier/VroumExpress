@@ -21,6 +21,7 @@ DerivedData
 project.xcworkspace
 **/.xcode.env.local
 
+
 # Gradle
 /build/
 /packages/react-native-gradle-plugin/build/
@@ -68,6 +69,7 @@ local.properties
 
 # Node
 node_modules
+.expo
 *.log
 .nvm
 package-lock.json
@@ -283,7 +285,8 @@ dist
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
