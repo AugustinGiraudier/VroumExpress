@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "../screens/HomeScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import OptionScreen from "../screens/OptionScreen";
+import React from "react";
 
 export default function Navigation() {
     const BottomTabNavigator = createBottomTabNavigator();
