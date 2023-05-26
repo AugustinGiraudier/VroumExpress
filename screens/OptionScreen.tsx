@@ -5,9 +5,9 @@ export default function OptionScreen() {
     return (
       <View style={styles.container}>
         <View style={styles.centered}>
-          <Text style={styles.title}>Option</Text>
+          <Text style={[styles.title,styles.text]}>Option</Text>
         </View>
-        <Text>Page d'options</Text>
+        <Text style={styles.text}>Page d'options</Text>
       </View>
     )
   };
@@ -15,12 +15,15 @@ export default function OptionScreen() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "darksalmon",
+      backgroundColor: "#FE5F00",
     },
     centered: {
       alignItems: "center"
     },
     title: {
       fontSize: 20
-    }
+    },
+      text:{
+        color:"white"
+      }
   });
