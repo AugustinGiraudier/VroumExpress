@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+
+import styles from '../styles/main';
 
 export default function HomeScreen() {
     return (
@@ -11,16 +13,3 @@ export default function HomeScreen() {
       </View>
     )
   };
-  
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: "darksalmon",
-    },
-    centered: {
-      alignItems: "center"
-    },
-    title: {
-      fontSize: 20
-    }
-  });
