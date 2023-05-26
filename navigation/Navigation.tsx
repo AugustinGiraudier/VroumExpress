@@ -1,17 +1,24 @@
 import { NavigationContainer } from "@react-navigation/native";
-import AgenceScreen from "../screens/AgenceScreen";
+import AgencesScreen from "../screens/AgencesScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import OptionScreen from "../screens/OptionScreen";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React from "react";
+
+import styles from '../styles/main';
 
 export default function Navigation() {
     const BottomTabNavigator = createBottomTabNavigator();
 
     return (
         <NavigationContainer>
-            <BottomTabNavigator.Navigator initialRouteName="Home">
-                <BottomTabNavigator.Screen name="Agences" component={AgenceScreen}
+            <BottomTabNavigator.Navigator
+                    initialRouteName="Agences"
+                    screenOptions={{
+                        tabBarActiveTintColor: styles.mainColor.color,
+                        tabBarInactiveTintColor: 'gray'
+                    }}>
+                <BottomTabNavigator.Screen name="Agences" component={AgencesScreen}
                    options={{
                        title: 'Agences',
                        tabBarIcon: ({ color, size }) => (

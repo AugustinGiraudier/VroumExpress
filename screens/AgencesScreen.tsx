@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import styles from '../styles/main';
 
-export default function HomeScreen() {
+export default function AgencesScreen() {
     return (
       <View style={styles.container}>
         <View style={styles.centered}>
