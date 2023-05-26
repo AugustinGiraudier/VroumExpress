@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 
 import styles from '../styles/main';
 
-export default function OptionScreen() {
+export default function OptionsScreen() {
     return (
       <View style={styles.container}>
         <View style={styles.centered}>

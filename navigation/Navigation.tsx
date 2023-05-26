@@ -1,9 +1,10 @@
 import { NavigationContainer } from "@react-navigation/native";
 import AgenceScreen from "../screens/AgenceScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import OptionScreen from "../screens/OptionScreen";
+import OptionsScreen from "../screens/OptionsScreen";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React from "react";
+import VoituresScreen from "../screens/VoituresScreen";
 
 export default function Navigation() {
     const BottomTabNavigator = createBottomTabNavigator();
@@ -18,14 +19,14 @@ export default function Navigation() {
                            <Icon name="home" color={color} size={size} />
                        ),
                    }}/>
-                <BottomTabNavigator.Screen name="Voitures" component={OptionScreen}
+                <BottomTabNavigator.Screen name="Voitures" component={VoituresScreen}
                    options={{
                        title: 'Voitures',
                        tabBarIcon: ({ color, size }) => (
                            <Icon name="car" color={color} size={size} />
                        ),
                    }}/>
-                <BottomTabNavigator.Screen name="Options" component={OptionScreen}
+                <BottomTabNavigator.Screen name="Options" component={OptionsScreen}
                    options={{
                        title: 'Options',
                        tabBarIcon: ({ color, size }) => (
