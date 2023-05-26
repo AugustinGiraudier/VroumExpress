@@ -17,7 +17,15 @@ const styles = StyleSheet.create({
     },
     text:{
         color:"white"
-    }
+    },
+    input: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        borderRadius: 10,
+        padding: 10,
+        backgroundColor: 'white',
+      },
   });
 
 export default styles;
