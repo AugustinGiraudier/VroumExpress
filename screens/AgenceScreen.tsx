@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function AgenceScreen() {
+export default function HomeScreen() {
     return (
       <View style={styles.container}>
         <View style={styles.centered}>
-          <Text style={[styles.title,styles.text]}>Mes super Nounours !</Text>
+          <Text style={styles.title}>Mes super Nounours !</Text>
         </View>
-        <Text style={styles.text}>Mon super texte ...</Text>
+        <Text>Mon super texte ...</Text>
       </View>
     )
   };
@@ -15,15 +15,12 @@ export default function AgenceScreen() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "#FE5F00",
+      backgroundColor: "darksalmon",
     },
     centered: {
       alignItems: "center"
     },
     title: {
       fontSize: 20
-    },
-      text:{
-          color:"white"
-      }
+    }
   });
