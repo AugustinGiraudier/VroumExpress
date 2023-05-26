@@ -7,9 +7,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#FE5F00",
-    },
-    centered: {
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: 'center',
     },
     title: {
         fontSize: 20,
@@ -19,6 +18,8 @@ const styles = StyleSheet.create({
         color:"white"
     },
     input: {
+        width: '50%',
+        borderColor: 'lightgray',
         height: 40,
         margin: 12,
         borderWidth: 1,
