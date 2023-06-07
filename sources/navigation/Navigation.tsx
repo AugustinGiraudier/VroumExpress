@@ -5,18 +5,24 @@ import OptionsScreen from "../screens/OptionsScreen";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React from "react";
 import VoituresScreen from "../screens/VoituresScreen";
+import { useColorScheme } from 'react-native';
 
 import styles from '../styles/main';
 
+import DarkTheme from "../styles/dark_theme";
+import LightTheme from "../styles/light_theme";
+
 export default function Navigation() {
     const BottomTabNavigator = createBottomTabNavigator();
+
+    const scheme = useColorScheme();
 
     return (
         <NavigationContainer>
             <BottomTabNavigator.Navigator
                     initialRouteName="Agences"
                     screenOptions={{
-                        tabBarActiveTintColor: styles.mainColor.color,
+                        tabBarActiveTintColor: styles.mainContainer.backgroundColor,
                         tabBarInactiveTintColor: 'gray'
                     }}>
                 <BottomTabNavigator.Screen name="Agences" component={AgencesScreen}

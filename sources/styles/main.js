@@ -1,31 +1,63 @@
 import { StyleSheet } from 'react-native';
+//import { useTheme } from '@react-navigation/native';
+
+//const { colors } = useTheme();
 
 const styles = StyleSheet.create({
-    mainColor:{
-        color : "#FE5F00"
-    },
-    container: {
+    mainContainer: {
         flex: 1,
         backgroundColor: "#FE5F00",
+        alignItems: "flex-start",
+        justifyContent: 'flex-start',
+        padding:10
+    },
+    container: {
+        flex: 0,
+        width: "100%",
+        backgroundColor: "#FFFFFF",
+        alignItems: "flex-start",
+        justifyContent: 'flex-start',
+        padding:10,
+        borderRadius:10,
+        marginTop:2
+    },
+    lightContainer:{
+        flex: 0,
+        width: "100%",
+        backgroundColor: "#F5F5F5",
+        alignItems: "flex-start",
+        justifyContent: 'flex-start',
+        padding:10,
+        borderRadius:10,
+        marginVertical:3
+    },
+    hStack: {
+        flex: 0,
+        width: "100%",
         alignItems: "center",
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
+        flexDirection:"row"
     },
     title: {
-        fontSize: 20,
-        color:"white"
+        fontSize: 17,
+        color: "black",
+        fontWeight:"bold"
+    },
+    textSecondary:{
+        color:"#C0C0C0",
+        fontSize: 11
     },
     text:{
-        color:"white"
+        color: "#F5F5F5"
     },
     input: {
-        width: '50%',
-        borderColor: 'lightgray',
+        width: '100%',
         height: 40,
-        margin: 12,
-        borderWidth: 1,
+        borderWidth: 0,
         borderRadius: 10,
-        padding: 10,
         backgroundColor: 'white',
+        paddingHorizontal:10,
+        marginTop:2
       },
   });
 
