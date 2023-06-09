@@ -63,7 +63,7 @@ export default function AgencesScreen() {
 
                 <Text style={[styles.text, {marginTop:20}]}>Les principales</Text>
                 <View style={[styles.container]}>
-                    <FlatList style={{width:"100%"}} data={DATA} keyExtractor={item => item.id} renderItem={({item}) =>
+                    <FlatList style={{width:"100%"}} scrollEnabled={false} data={DATA} keyExtractor={item => item.id} renderItem={({item}) =>
                         <View style={styles.lightContainer}>
                             <View style={styles.hStack}>
                                 <Icon name="home" color={styles.mainContainer.backgroundColor} size={30} />

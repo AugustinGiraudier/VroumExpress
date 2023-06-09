@@ -31,6 +31,16 @@ const styles = StyleSheet.create({
         borderRadius:10,
         marginVertical:3
     },
+    semiLightContainer:{
+        width:"50%",
+        alignItems: "center",
+        padding:3
+    },
+    carImage:{
+        width: undefined,
+        height: 80,
+        aspectRatio:3/2
+    },
     hStack: {
         flex: 0,
         width: "100%",
