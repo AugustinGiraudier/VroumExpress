@@ -11,37 +11,35 @@ import styles from '../styles/main';
 
 import DarkTheme from "../styles/dark_theme";
 import LightTheme from "../styles/light_theme";
+import {createStackNavigator} from "@react-navigation/stack";
+import {AgencesStackNavigation, VoituresStackNavigation} from "./StackNavigation";
 
 export default function Navigation() {
     const BottomTabNavigator = createBottomTabNavigator();
 
-    const scheme = useColorScheme();
-
     return (
         <NavigationContainer>
             <BottomTabNavigator.Navigator
-                    initialRouteName="Agences"
+                    initialRouteName="AgencesTab"
                     screenOptions={{
+                        headerShown:false,
                         tabBarActiveTintColor: styles.mainContainer.backgroundColor,
                         tabBarInactiveTintColor: 'gray'
                     }}>
-                <BottomTabNavigator.Screen name="Agences" component={AgencesScreen}
+                <BottomTabNavigator.Screen name="AgencesTab" component={AgencesStackNavigation}
                    options={{
-                       title: 'Agences',
                        tabBarIcon: ({ color, size }) => (
                            <Icon name="home" color={color} size={size} />
                        ),
                    }}/>
-                <BottomTabNavigator.Screen name="Voitures" component={VoituresScreen}
+                <BottomTabNavigator.Screen name="VoituresTab" component={VoituresStackNavigation}
                    options={{
-                       title: 'Voitures',
                        tabBarIcon: ({ color, size }) => (
                            <Icon name="car" color={color} size={size} />
                        ),
                    }}/>
-                <BottomTabNavigator.Screen name="Options" component={OptionsScreen}
+                <BottomTabNavigator.Screen name="OptionsTab" component={OptionsScreen}
                    options={{
-                       title: 'Options',
                        tabBarIcon: ({ color, size }) => (
                            <Icon name="cog" color={color} size={size} />
                        ),

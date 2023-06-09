@@ -1,10 +1,13 @@
 import React from 'react';
-import {FlatList, Image, ScrollView, Text, TextInput, View} from 'react-native';
+import {FlatList, Image, ScrollView, Text, View} from 'react-native';
 
 import styles from '../styles/main';
-import Icon from "react-native-vector-icons/FontAwesome";
+import {TouchableHighlight} from "react-native-gesture-handler";
+import {useNavigation} from "@react-navigation/native";
 
 export default function VoituresScreen() {
+
+    const navigation = useNavigation()
 
     const DATA = [
         {
@@ -24,6 +27,7 @@ export default function VoituresScreen() {
         },
     ];
 
+    // @ts-ignore
     return (
         <View style={styles.mainContainer}>
             <ScrollView style={{width:"100%"}}>
@@ -31,7 +35,9 @@ export default function VoituresScreen() {
                 <View style={[styles.container]}>
                     <FlatList style={{width:"100%"}} scrollEnabled={false}
                               numColumns={2} data={DATA} keyExtractor={item => item.id} renderItem={({item}) =>
+
                         <View style={[styles.semiLightContainer]}>
+                            <TouchableHighlight style={{width:"100%", padding:0, margin:0}} onPress={() => navigation.navigate("Agences")}>
                             <View style={[styles.lightContainer, {alignItems: "center"}]}>
                                 <Image style={styles.carImage} source={{uri: item.image}}/>
                                 <View>
@@ -39,7 +45,9 @@ export default function VoituresScreen() {
                                     <Text style={styles.textSecondary}>quantité : 8</Text>
                                 </View>
                             </View>
+                            </TouchableHighlight>
                         </View>
+
                     }/>
                 </View>
             </ScrollView>

@@ -27,14 +27,15 @@ const styles = StyleSheet.create({
         backgroundColor: "#F5F5F5",
         alignItems: "flex-start",
         justifyContent: 'flex-start',
-        padding:10,
+        padding:15,
         borderRadius:10,
         marginVertical:3
     },
     semiLightContainer:{
         width:"50%",
         alignItems: "center",
-        padding:3
+        paddingVertical:3,
+        paddingHorizontal:0
     },
     carImage:{
         width: undefined,
