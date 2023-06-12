@@ -1,13 +1,14 @@
-import {StyleSheet, useColorScheme} from 'react-native';
 import Navigation from './navigation/Navigation';
-import StackNavigation from "./navigation/StackNavigation";
+import store from "./redux/store";
+import {Provider} from "react-redux";
 
 export default function App() {
 
   //const scheme = useColorScheme();
 
   return (
-
-    <Navigation />
+      <Provider store={store}>
+        <Navigation />
+      </Provider>
   );
 }
