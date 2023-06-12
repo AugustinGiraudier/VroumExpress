@@ -3,6 +3,8 @@ import {FlatList, ScrollView, Text, TextInput, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from '../styles/main';
+import {TouchableHighlight} from "react-native-gesture-handler";
+import {useNavigation} from "@react-navigation/native";
 
 export default function AgencesScreen() {
 
@@ -49,6 +51,7 @@ export default function AgencesScreen() {
         },
     ];
 
+    const navigation = useNavigation()
 
     return (
         <View style={styles.mainContainer}>
@@ -64,15 +67,18 @@ export default function AgencesScreen() {
                 <Text style={[styles.text, {marginTop:20}]}>Les principales</Text>
                 <View style={[styles.container]}>
                     <FlatList style={{width:"100%"}} scrollEnabled={false} data={DATA} keyExtractor={item => item.id} renderItem={({item}) =>
-                        <View style={styles.lightContainer}>
-                            <View style={styles.hStack}>
-                                <Icon name="home" color={styles.mainContainer.backgroundColor} size={30} />
-                                <View style={{marginLeft:8}}>
-                                    <Text style={styles.title}>{item.agence}</Text>
-                                    <Text style={styles.textSecondary}>{item.dispo}</Text>
+
+                        <TouchableHighlight style={{width:"100%", padding:0, margin:0}} onPress={() => navigation.navigate("Voitures disponibles")}>
+                            <View style={styles.lightContainer}>
+                                <View style={styles.hStack}>
+                                    <Icon name="home" color={styles.mainContainer.backgroundColor} size={30} />
+                                    <View style={{marginLeft:8}}>
+                                        <Text style={styles.title}>{item.agence}</Text>
+                                        <Text style={styles.textSecondary}>{item.dispo}</Text>
+                                    </View>
                                 </View>
                             </View>
-                        </View>
+                        </TouchableHighlight>
                     }/>
                 </View>
             </ScrollView>

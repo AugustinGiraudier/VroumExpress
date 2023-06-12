@@ -20,19 +20,19 @@ export default function Navigation() {
     return (
         <NavigationContainer>
             <BottomTabNavigator.Navigator
-                    initialRouteName="AgencesTab"
+                    initialRouteName="Agences"
                     screenOptions={{
                         headerShown:false,
                         tabBarActiveTintColor: styles.mainContainer.backgroundColor,
                         tabBarInactiveTintColor: 'gray'
                     }}>
-                <BottomTabNavigator.Screen name="AgencesTab" component={AgencesStackNavigation}
+                <BottomTabNavigator.Screen name="Agences" component={AgencesStackNavigation}
                    options={{
                        tabBarIcon: ({ color, size }) => (
                            <Icon name="home" color={color} size={size} />
                        ),
                    }}/>
-                <BottomTabNavigator.Screen name="VoituresTab" component={VoituresStackNavigation}
+                <BottomTabNavigator.Screen name="Voitures" component={VoituresStackNavigation}
                    options={{
                        tabBarIcon: ({ color, size }) => (
                            <Icon name="car" color={color} size={size} />
