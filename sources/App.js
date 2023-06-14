@@ -14,14 +14,13 @@ export default function App() {
 
   /*
   TODO
-    * faire des classes metier
-    * finir page one car
     * pouvoir envoyer des datas aux vues
+    * finir page one car
     * faire l'action d'update
     * text input
     * utiliser l'api
     * favoris en async storage
-    * tests :
+    * unit tests :
         - actions
         - reducers
         - ui

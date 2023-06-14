@@ -5,13 +5,15 @@ import styles from '../styles/main';
 import {TouchableHighlight} from "react-native-gesture-handler";
 import {useSelector} from 'react-redux';
 import {useNavigation} from "@react-navigation/native";
+import Voiture from "../model/Voiture";
 
-export default function VoituresScreen() {
+
+export default function VoituresScreen({route}) {
 
     const navigation = useNavigation()
 
     // @ts-ignore
-    const DATA = useSelector(state => state.voituresReducer.voitures);
+    const DATA = route.params ? route.params.items : useSelector(state => state.voituresReducer.voitures)
 
     return (
         <View style={styles.mainContainer}>

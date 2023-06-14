@@ -6,6 +6,7 @@ import styles from '../styles/main';
 import {TouchableHighlight} from "react-native-gesture-handler";
 import {useSelector} from 'react-redux';
 import {useNavigation} from "@react-navigation/native";
+import Voiture from "../model/Voiture";
 
 export default function AgencesScreen() {
 
@@ -28,7 +29,7 @@ export default function AgencesScreen() {
                 <View style={[styles.container]}>
                     <FlatList style={{width:"100%"}} scrollEnabled={false} data={DATA} keyExtractor={item => item.id} renderItem={({item}) =>
 
-                        <TouchableHighlight style={{width:"100%", padding:0, margin:0}} onPress={() => navigation.navigate("Voitures disponibles" as never)}>
+                        <TouchableHighlight style={{width:"100%", padding:0, margin:0}} onPress={() => navigation.navigate("Voitures disponibles" as never, {items:item.voitures} as  never)}>
                             <View style={styles.lightContainer}>
                                 <View style={styles.hStack}>
                                     <Icon name="home" color={styles.mainContainer.backgroundColor} size={30} />
