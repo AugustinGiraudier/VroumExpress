@@ -33,8 +33,8 @@ export default function AgencesScreen() {
                                 <View style={styles.hStack}>
                                     <Icon name="home" color={styles.mainContainer.backgroundColor} size={30} />
                                     <View style={{marginLeft:8}}>
-                                        <Text style={styles.title}>{item.agence}</Text>
-                                        <Text style={styles.textSecondary}>{item.dispo}</Text>
+                                        <Text style={styles.title}>{item.ville}</Text>
+                                        <Text style={styles.textSecondary}>quantité : {item.voitures.length}</Text>
                                     </View>
                                 </View>
                             </View>

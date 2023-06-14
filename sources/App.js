@@ -11,4 +11,23 @@ export default function App() {
         <Navigation />
       </Provider>
   );
+
+  /*
+  TODO
+    * faire des classes metier
+    * finir page one car
+    * pouvoir envoyer des datas aux vues
+    * faire l'action d'update
+    * text input
+    * utiliser l'api
+    * favoris en async storage
+    * tests :
+        - actions
+        - reducers
+        - ui
+
+
+   */
+
+
 }

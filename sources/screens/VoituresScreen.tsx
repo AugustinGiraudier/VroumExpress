@@ -26,8 +26,8 @@ export default function VoituresScreen() {
                             <View style={[styles.lightContainer, {alignItems: "center"}]}>
                                 <Image style={styles.carImage} source={{uri: item.image}}/>
                                 <View>
-                                    <Text style={styles.title}>{item.model}</Text>
-                                    <Text style={styles.textSecondary}>quantité : 8</Text>
+                                    <Text style={styles.title}>{item.marque} {item.modele}</Text>
+                                    <Text style={styles.textSecondary}>quantité : 1</Text>
                                 </View>
                             </View>
                             </TouchableHighlight>
