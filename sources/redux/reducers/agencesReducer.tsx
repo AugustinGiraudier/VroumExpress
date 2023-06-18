@@ -4,16 +4,7 @@ import getCarImage from "../../model/Base64CarImage";
 import {AGENCE_ERROR, GET_AGENCES, SWAP_VOITURE_IN_AGENCES} from "../Constants";
 
 const initialState = {
-    agences: [
-        new Agence('bd7acbea-c1b1-46c2-aed5-3ad53abb28ba', 'Paris', [
-            new Voiture("qekflqzhdliherrr", "Peugeot", "208", "2023-06-13", getCarImage()),
-            new Voiture("qekflqzhdddlihee", "Tesla", "Modele Y", "2023-06-13", getCarImage())
-        ]),
-        new Agence('bd7hhacbea-c1b1-46c2-aed5-3ad53abb28ba', 'Lyon', [
-            new Voiture("qekhhflqzhdliherrr", "Peugeot", "208", "2023-06-13", getCarImage()),
-            new Voiture("qekflqzhhhdddlihee", "Tesla", "Modele Y", "2023-06-13", getCarImage())
-        ]),
-    ]
+    agences: []
 }
 
 export default function agencesReducer(state = initialState, action){

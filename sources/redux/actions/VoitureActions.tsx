@@ -2,17 +2,25 @@ import {GET, GET_VOITURES, PUT, UPDATE_VOITURE, VOITURE_ERROR} from "../Constant
 import {Dispatch} from "redux";
 import {API_ROUTES_MAPPER} from "../ApiRoutes";
 import Voiture from "../../model/Voiture";
+import getCarImage from "../../model/Base64CarImage";
 
 
 export const getVoitures = () => {
     const verb = GET
     return async (dispatch: Dispatch) => {
         try {
-            const response = await fetch(API_ROUTES_MAPPER[GET_VOITURES]);
+            /*const response = await fetch(API_ROUTES_MAPPER[GET_VOITURES]);
             if (!response.ok) {
                 throw new Error(`Failed to ${verb}:  ${response.statusText}`);
             }
-            const data = await response.json();
+            const data = await response.json();*/
+
+            const data = [
+                new Voiture("qekflqzhdliherrr", "Tesla", "Modele Y", "2023-06-13", getCarImage()),
+                new Voiture("qekflqzhdddlihee", "Tesla", "Modele Y", "2023-06-13", getCarImage()),
+                new Voiture("qekddeflqzhdlihe", "Tesla", "Modele Y", "2023-06-13", getCarImage()),
+                new Voiture("qezgfkflqzhdlihe", "Tesla", "Modele Y", "2023-06-13", getCarImage()),
+            ];
             dispatch({ type: GET_VOITURES, payload: data });
         }
         catch (error) {

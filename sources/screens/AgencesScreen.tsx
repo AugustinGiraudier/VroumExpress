@@ -4,15 +4,26 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from '../styles/main';
 import {TouchableHighlight} from "react-native-gesture-handler";
-import {useSelector} from 'react-redux';
-import {useNavigation} from "@react-navigation/native";
-import Voiture from "../model/Voiture";
+import {useDispatch, useSelector} from 'react-redux';
+import {useFocusEffect, useNavigation} from "@react-navigation/native";
+import {AppDispatch} from "../redux/store";
+import {getAgences} from "../redux/actions/AgencesActions";
 
 export default function AgencesScreen() {
 
     // @ts-ignore
     const DATA = useSelector(state => state.agencesReducer.agences);
+    const dispatch: AppDispatch = useDispatch();
     const navigation = useNavigation();
+
+    useFocusEffect(
+        React.useCallback(() => {
+            const loadMoves = async () => {
+                await (dispatch as AppDispatch)(getAgences());
+            };
+            loadMoves();
+        }, [dispatch])
+    );
 
     return (
         <View style={styles.mainContainer}>

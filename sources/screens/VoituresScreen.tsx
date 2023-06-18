@@ -3,9 +3,11 @@ import {FlatList, Image, ScrollView, Text, View} from 'react-native';
 
 import styles from '../styles/main';
 import {TouchableHighlight} from "react-native-gesture-handler";
-import {useSelector} from 'react-redux';
-import {useNavigation} from "@react-navigation/native";
-import Voiture from "../model/Voiture";
+import {useDispatch, useSelector} from 'react-redux';
+import {useFocusEffect, useNavigation} from "@react-navigation/native";
+import {AppDispatch} from "../redux/store";
+import {getAgences} from "../redux/actions/AgencesActions";
+import {getVoitures} from "../redux/actions/VoitureActions";
 
 
 export default function VoituresScreen({route}) {
@@ -14,6 +16,18 @@ export default function VoituresScreen({route}) {
 
     // @ts-ignore
     const DATA = route.params ? route.params.items : useSelector(state => state.voituresReducer.voitures)
+    const dispatch: AppDispatch = useDispatch();
+
+    if(!route.params){
+        useFocusEffect(
+            React.useCallback(() => {
+                const loadMoves = async () => {
+                    await (dispatch as AppDispatch)(getVoitures());
+                };
+                loadMoves();
+            }, [dispatch])
+        );
+    }
 
     return (
         <View style={styles.mainContainer}>

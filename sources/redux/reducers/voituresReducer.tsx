@@ -1,14 +1,8 @@
-import getCarImage from "../../model/Base64CarImage";
 import Voiture from "../../model/Voiture";
 import {GET_VOITURES, UPDATE_VOITURE, VOITURE_ERROR} from "../Constants";
 
 const initialState = {
-    voitures: [
-        new Voiture("qekflqzhdliherrr", "Tesla", "Modele Y", "2023-06-13", getCarImage()),
-        new Voiture("qekflqzhdddlihee", "Tesla", "Modele Y", "2023-06-13", getCarImage()),
-        new Voiture("qekddeflqzhdlihe", "Tesla", "Modele Y", "2023-06-13", getCarImage()),
-        new Voiture("qezgfkflqzhdlihe", "Tesla", "Modele Y", "2023-06-13", getCarImage()),
-    ]
+    voitures: []
 }
 
 export default function voituresReducer(state = initialState, action){
