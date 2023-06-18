@@ -42,6 +42,21 @@ const styles = StyleSheet.create({
         height: 80,
         aspectRatio:3/2
     },
+    bigCarImage:{
+        width: "100%",
+        height: undefined,
+        aspectRatio:3/2,
+        marginVertical:10
+    },
+    pressable:{
+        width:"100%",
+        height:40,
+        borderRadius : 8,
+        backgroundColor: "white",
+        marginTop:30,
+        alignItems:"center",
+        justifyContent:"center",
+    },
     hStack: {
         flex: 0,
         width: "100%",

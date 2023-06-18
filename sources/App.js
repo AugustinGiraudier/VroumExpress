@@ -4,8 +4,6 @@ import {Provider} from "react-redux";
 
 export default function App() {
 
-  //const scheme = useColorScheme();
-
   return (
       <Provider store={store}>
         <Navigation />
@@ -14,17 +12,14 @@ export default function App() {
 
   /*
   TODO
-    * pouvoir envoyer des datas aux vues
-    * finir page one car
-    * faire l'action d'update
-    * text input
-    * utiliser l'api
+    * faire les actions d'update (sans api)
+    * text input + action liée
     * favoris en async storage
+    * utiliser l'api
     * unit tests :
         - actions
         - reducers
         - ui
-
 
    */
 

@@ -24,7 +24,7 @@ export default function VoituresScreen({route}) {
                               numColumns={2} data={DATA} keyExtractor={item => item.id} renderItem={({item}) =>
 
                         <View style={[styles.semiLightContainer]}>
-                            <TouchableHighlight style={{width:"100%", padding:0, margin:0}} onPress={() => navigation.navigate('Louer une voiture' as never)}>
+                            <TouchableHighlight style={{width:"100%", padding:0, margin:0}} onPress={() => navigation.navigate('Louer une voiture' as never, {item:item} as never)}>
                             <View style={[styles.lightContainer, {alignItems: "center"}]}>
                                 <Image style={styles.carImage} source={{uri: item.image}}/>
                                 <View>

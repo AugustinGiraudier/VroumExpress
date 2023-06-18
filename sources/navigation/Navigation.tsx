@@ -12,7 +12,7 @@ import styles from '../styles/main';
 import DarkTheme from "../styles/dark_theme";
 import LightTheme from "../styles/light_theme";
 import {createStackNavigator} from "@react-navigation/stack";
-import {AgencesStackNavigation, VoituresStackNavigation} from "./StackNavigation";
+import {AgencesStackNavigation, OptionsStackNavigation, VoituresStackNavigation} from "./StackNavigation";
 
 export default function Navigation() {
     const BottomTabNavigator = createBottomTabNavigator();
@@ -38,7 +38,7 @@ export default function Navigation() {
                            <Icon name="car" color={color} size={size} />
                        ),
                    }}/>
-                <BottomTabNavigator.Screen name="OptionsTab" component={OptionsScreen}
+                <BottomTabNavigator.Screen name="Options" component={OptionsStackNavigation}
                    options={{
                        tabBarIcon: ({ color, size }) => (
                            <Icon name="cog" color={color} size={size} />
