@@ -5,6 +5,21 @@ import Agence from "../../model/Agence";
 import Voiture from "../../model/Voiture";
 import getCarImage from "../../model/Base64CarImage";
 
+export const setAgences = (data) => ({
+    type: GET_AGENCES,
+    payload : data
+})
+
+export const setSwapVoiture = (data) => ({
+    type: SWAP_VOITURE_IN_AGENCES,
+    payload : data
+})
+
+export const setError = (data) => ({
+    type: AGENCE_ERROR,
+    payload : data
+})
+
 export const getAgences = () => {
     const verb = GET
     return async (dispatch: Dispatch) => {
@@ -25,12 +40,12 @@ export const getAgences = () => {
                 ]),
             ];
 
-            dispatch({ type: GET_AGENCES, payload: data });
+            dispatch(setAgences(data));
         }
         catch (error) {
             console.error(error);
             // @ts-ignore
-            dispatch({ type: AGENCE_ERROR, payload: error.message });
+            dispatch(setError(error.message));
         }
     }
 }
@@ -44,12 +59,12 @@ export const swapVoiture = (AgenceSourceId, AgenceDestId, VoitureId) => {
                 throw new Error(`Failed to ${verb}:  ${response.statusText}`);
             }
             const data = await response.json();
-            dispatch({ type: SWAP_VOITURE_IN_AGENCES, payload: data });
+            dispatch(setSwapVoiture(data));
         }
         catch (error) {
             console.error(error);
             // @ts-ignore
-            dispatch({ type: VOITURE_ERROR, payload: error.message });
+            dispatch(setError(error.message));
         }
     }
 }

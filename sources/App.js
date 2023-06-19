@@ -12,10 +12,10 @@ export default function App() {
 
   /*
   TODO
-    * faire les actions d'update (sans api)
-    * text input + action liée
+    * refaire stub propre
+    * recherche agences
     * favoris en async storage
-    * utiliser l'api
+    * location des voitures
     * unit tests :
         - actions
         - reducers
