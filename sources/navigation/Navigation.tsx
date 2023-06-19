@@ -20,7 +20,7 @@ export default function Navigation() {
     return (
         <NavigationContainer>
             <BottomTabNavigator.Navigator
-                    initialRouteName="Agences"
+                    initialRouteName="Voitures"
                     screenOptions={{
                         headerShown:false,
                         tabBarActiveTintColor: styles.mainContainer.backgroundColor,

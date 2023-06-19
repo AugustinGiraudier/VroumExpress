@@ -21,6 +21,7 @@ export function AgencesStackNavigation() {
         <Stack.Navigator initialRouteName="Rechercher une agence">
             <Stack.Screen name="Rechercher une agence" component={AgencesScreen}/>
             <Stack.Screen name="Voitures disponibles" component={VoituresScreen}/>
+            <Stack.Screen name="Louer une voiture" component={OneVoitureScreen}/>
         </Stack.Navigator>
     )
 }

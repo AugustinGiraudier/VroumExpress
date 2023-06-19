@@ -8,6 +8,7 @@ import {useFocusEffect, useNavigation} from "@react-navigation/native";
 import {AppDispatch} from "../redux/store";
 import {getAgences} from "../redux/actions/AgencesActions";
 import {getVoitures} from "../redux/actions/VoitureActions";
+import Stub from "../Stub/Stub";
 
 
 export default function VoituresScreen({route}) {
@@ -28,6 +29,8 @@ export default function VoituresScreen({route}) {
             }, [dispatch])
         );
     }
+
+    Stub.getInstance().swapVoitureBetweenAgences("0", "1", "0");
 
     return (
         <View style={styles.mainContainer}>

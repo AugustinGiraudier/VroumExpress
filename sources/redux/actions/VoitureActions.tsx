@@ -2,7 +2,7 @@ import {GET, GET_VOITURES, PUT, UPDATE_VOITURE, VOITURE_ERROR} from "../Constant
 import {Dispatch} from "redux";
 import {API_ROUTES_MAPPER} from "../ApiRoutes";
 import Voiture from "../../model/Voiture";
-import getCarImage from "../../model/Base64CarImage";
+import Stub from "../../Stub/Stub";
 
 export const setVoitures = (data) => ({
     type: GET_VOITURES,
@@ -23,18 +23,17 @@ export const getVoitures = () => {
     const verb = GET
     return async (dispatch: Dispatch) => {
         try {
-            /*const response = await fetch(API_ROUTES_MAPPER[GET_VOITURES]);
+            // Version API
+            /*
+            const response = await fetch(API_ROUTES_MAPPER[GET_VOITURES]);
             if (!response.ok) {
                 throw new Error(`Failed to ${verb}:  ${response.statusText}`);
             }
-            const data = await response.json();*/
+            const data = await response.json();
+            */
 
-            const data = [
-                new Voiture("qekflqzhdliherrr", "Tesla", "Modele Y", "2023-06-13", getCarImage()),
-                new Voiture("qekflqzhdddlihee", "Tesla", "Modele Y", "2023-06-13", getCarImage()),
-                new Voiture("qekddeflqzhdlihe", "Tesla", "Modele Y", "2023-06-13", getCarImage()),
-                new Voiture("qezgfkflqzhdlihe", "Tesla", "Modele Y", "2023-06-13", getCarImage()),
-            ];
+            // Version Stub
+            const data = Stub.getInstance().getVoitures();
             dispatch(setVoitures(data));
         }
         catch (error) {
@@ -45,15 +44,22 @@ export const getVoitures = () => {
     }
 }
 
-export const updateVoiture = (voiture : Voiture) => {
+export const updateVoiture = (voiture : Voiture, disponible : string) => {
     const verb = PUT
     return async (dispatch: Dispatch) => {
         try {
-            const response = await fetch(`${API_ROUTES_MAPPER[UPDATE_VOITURE]}/${voiture.id}/${voiture.disponible}`);
+            // Version Api
+            /*
+            const response = await fetch(`${API_ROUTES_MAPPER[UPDATE_VOITURE]}/${voiture.id}/${disponible}`);
             if (!response.ok) {
                 throw new Error(`Failed to ${verb}:  ${response.statusText}`);
             }
             const data = await response.json();
+             */
+
+            // Version Stub
+            const data = Stub.getInstance().updateVoiture(voiture.id, disponible);
+
             dispatch(setUpdateVoitures(data));
         }
         catch (error) {
