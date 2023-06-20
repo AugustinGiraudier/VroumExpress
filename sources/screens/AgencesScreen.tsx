@@ -12,7 +12,7 @@ import {getAgences} from "../redux/actions/AgencesActions";
 export default function AgencesScreen() {
 
     // @ts-ignore
-    const DATA = useSelector(state => state.agencesReducer.agences);
+    const DATA : Agence[] = useSelector(state => state.agencesReducer.agences);
     const dispatch: AppDispatch = useDispatch();
     const navigation = useNavigation();
 
@@ -41,6 +41,12 @@ export default function AgencesScreen() {
 
                 <Text style={[styles.text, {marginTop:20}]}>Les principales</Text>
                 <View style={[styles.container]}>
+                    
+                    {DATA.length === 0 && <View>
+                        <Text style={{color:"gray"}}>Rien à afficher...</Text>
+                    </View>}
+
+                    {DATA.length !== 0 &&
                     <FlatList style={{width:"100%"}} scrollEnabled={false} data={DATA} keyExtractor={item => item.id} renderItem={({item}) =>
 
                         <TouchableHighlight style={{width:"100%", padding:0, margin:0}} onPress={() => navigation.navigate("Voitures disponibles" as never, {items:item.voitures} as never)}>
@@ -54,7 +60,8 @@ export default function AgencesScreen() {
                                 </View>
                             </View>
                         </TouchableHighlight>
-                    }/>
+                    }/>}
+
                 </View>
             </ScrollView>
         </View>

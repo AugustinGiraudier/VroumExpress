@@ -12,8 +12,6 @@ export default function App() {
 
   /*
   TODO
-    * refaire stub propre
-    * recherche agences
     * favoris en async storage
     * location des voitures
     * unit tests :
