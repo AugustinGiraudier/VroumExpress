@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {FlatList, ScrollView, Text, TextInput, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -16,9 +16,12 @@ export default function AgencesScreen() {
     const dispatch: AppDispatch = useDispatch();
     const navigation = useNavigation();
 
+    let textInput = useRef<TextInput>(null);
+
     useFocusEffect(
         React.useCallback(() => {
             const loadMoves = async () => {
+                textInput.current.clear();
                 await (dispatch as AppDispatch)(getAgences());
             };
             loadMoves();
@@ -30,11 +33,11 @@ export default function AgencesScreen() {
             <ScrollView style={{width:"100%"}}>
                 <Text style={[styles.text, {marginTop:20}]}>Trouver une agence</Text>
                 <TextInput
+                    ref={textInput}
                     style={styles.input}
-                    value=""
                     placeholder="Ex : Paris"
+                    onChangeText={async (text) => {await (dispatch as AppDispatch)(getAgences(text))}}
                 />
-
 
                 <Text style={[styles.text, {marginTop:20}]}>Les principales</Text>
                 <View style={[styles.container]}>

@@ -18,13 +18,13 @@ export const setError = (data) => ({
     payload : data
 })
 
-export const getAgences = () => {
+export const getAgences = (searchKey : string = "") => {
     const verb = GET
     return async (dispatch: Dispatch) => {
         try {
             // Version Api
             /*
-            const response = await fetch(API_ROUTES_MAPPER[GET_AGENCES]);
+            const response = await fetch(`${API_ROUTES_MAPPER[GET_AGENCES]}/${searchKey}`);
             if (!response.ok) {
                 throw new Error(`Failed to ${verb}:  ${response.statusText}`);
             }
@@ -32,7 +32,7 @@ export const getAgences = () => {
             */
 
             // Version Stub
-            const data = Stub.getInstance().getAgences();
+            const data = Stub.getInstance().getAgences(searchKey);
 
             dispatch(setAgences(data));
         }

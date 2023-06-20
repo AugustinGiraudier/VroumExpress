@@ -30,8 +30,6 @@ export default function VoituresScreen({route}) {
         );
     }
 
-    Stub.getInstance().swapVoitureBetweenAgences("0", "1", "0");
-
     return (
         <View style={styles.mainContainer}>
             <ScrollView style={{width:"100%"}}>

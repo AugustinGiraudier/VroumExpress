@@ -37,7 +37,7 @@ export default class Stub {
             new Voiture("4", "Peugeot", "3008", "2023-06-13", getCarImage(4)),
             new Voiture("5", "Mercedes", "Class c", "2023-06-13", getCarImage(5)),
             new Voiture("6", "Porsche", "Panamera", "2023-06-13", getCarImage(6)),
-            new Voiture("7", "Citroen", "DS7", "2023-07-19", getCarImage(7))
+            new Voiture("7", "Citroen", "DS7", "2023-06-19", getCarImage(7))
         ])
     ]
 
@@ -52,17 +52,19 @@ export default class Stub {
         }
         return voitures;
     }
-    public getAgences = () => {
+    public getAgences = (searchKey : string = "") => {
 
         let agences : Agence[] = [];
         for(const ag of this.agences){
-            let voitures : Voiture[] = [];
-            for(const voit of ag.voitures){
-                if(voit.disponible <= new Date()){
-                    voitures.push(voit);
+            if((searchKey === "" || ag.ville.toLowerCase().includes(searchKey.toLowerCase()))){
+                let voitures : Voiture[] = [];
+                for(const voit of ag.voitures){
+                    if(voit.disponible <= new Date()){
+                        voitures.push(voit);
+                    }
                 }
+                agences.push(new Agence(ag.id, ag.ville, voitures));
             }
-            agences.push(new Agence(ag.id, ag.ville, voitures));
         }
 
         return agences;
