@@ -12,7 +12,6 @@ export default function App() {
 
   /*
   TODO
-    * favoris en async storage
     * location des voitures
     * unit tests :
         - actions

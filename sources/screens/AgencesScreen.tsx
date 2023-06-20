@@ -20,11 +20,11 @@ export default function AgencesScreen() {
 
     useFocusEffect(
         React.useCallback(() => {
-            const loadMoves = async () => {
+            const load = async () => {
                 textInput.current.clear();
                 await (dispatch as AppDispatch)(getAgences());
             };
-            loadMoves();
+            load();
         }, [dispatch])
     );
 
@@ -41,7 +41,7 @@ export default function AgencesScreen() {
 
                 <Text style={[styles.text, {marginTop:20}]}>Les principales</Text>
                 <View style={[styles.container]}>
-                    
+
                     {DATA.length === 0 && <View>
                         <Text style={{color:"gray"}}>Rien à afficher...</Text>
                     </View>}
