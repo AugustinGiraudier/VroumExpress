@@ -26,18 +26,18 @@ export default class Stub {
 
     private agences : Agence[] = [
         new Agence('0', 'Paris', [
-            new Voiture("0", "Peugeot", "308", "2023-06-13", getCarImage(0)),
-            new Voiture("1", "Audi", "Q3", "2023-06-13", getCarImage(1))
+            new Voiture("0", "Peugeot", "308", "2023-06-13", getCarImage(0), "0", "Paris"),
+            new Voiture("1", "Audi", "Q3", "2023-06-13", getCarImage(1), "0","Paris")
         ]),
         new Agence('1', 'Lyon', [
-            new Voiture("2", "Peugeot", "Traveller", "2023-06-13", getCarImage(2)),
-            new Voiture("3", "Volkswagen", "Golf", "2023-06-13", getCarImage(3))
+            new Voiture("2", "Peugeot", "Traveller", "2023-06-13", getCarImage(2), "1",'Lyon'),
+            new Voiture("3", "Volkswagen", "Golf", "2023-06-13", getCarImage(3), "1",'Lyon')
         ]),
         new Agence('2', 'Marseille', [
-            new Voiture("4", "Peugeot", "3008", "2023-06-13", getCarImage(4)),
-            new Voiture("5", "Mercedes", "Class c", "2023-06-13", getCarImage(5)),
-            new Voiture("6", "Porsche", "Panamera", "2023-06-13", getCarImage(6)),
-            new Voiture("7", "Citroen", "DS7", "2023-06-19", getCarImage(7))
+            new Voiture("4", "Peugeot", "3008", "2023-06-13", getCarImage(4), "2",'Marseille'),
+            new Voiture("5", "Mercedes", "Class c", "2023-06-13", getCarImage(5), "2",'Marseille'),
+            new Voiture("6", "Porsche", "Panamera", "2023-06-13", getCarImage(6), "2",'Marseille'),
+            new Voiture("7", "Citroen", "DS7", "2023-06-19", getCarImage(7), "2",'Marseille')
         ])
     ]
 

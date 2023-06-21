@@ -14,10 +14,9 @@ export default function App() {
   TODO
     * location des voitures
     * unit tests :
-        - actions
-        - reducers
-        - ui
-
+        - all actions
+        - all reducers
+        - 1 ui
    */
 
 

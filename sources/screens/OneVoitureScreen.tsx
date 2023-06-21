@@ -1,26 +1,42 @@
-import React from 'react';
-import {Button, Image, Pressable, ScrollView, Text, TextInput, TouchableWithoutFeedback, View} from 'react-native';
-
+import React, {useState} from 'react';
+import {
+    Image,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View
+} from 'react-native';
 import styles from '../styles/main';
+import DatePicker from 'react-native-modern-datepicker';
+import { getToday } from 'react-native-modern-datepicker';
+import {Picker} from '@react-native-picker/picker';
 import {useFocusEffect, useNavigation} from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {isItemInLocalStorage, toggleItemInStorage} from "../asyncStorage/AsyncStorageHelper";
 import Voiture from "../model/Voiture";
+import {useDispatch, useSelector} from "react-redux";
+import Agence from "../model/Agence";
 import {AppDispatch} from "../redux/store";
 import {getAgences} from "../redux/actions/AgencesActions";
 
 export default function OneVoitureScreen({route}) {
 
+    // @ts-ignore
+    const agences : Agence[] = useSelector(state => state.agencesReducer.agences);
     const item : Voiture = route.params.item;
-    const [favIconColor, setFavIconColor] = React.useState("yellow");
+    const dispatch: AppDispatch = useDispatch();
+    const [favIconColor, setFavIconColor] = useState("yellow");
+    const [selectedLanguage, setSelectedLanguage] = useState();
 
     useFocusEffect(
         React.useCallback(() => {
             const load = async () => {
                 setFavIconColor(await isItemInLocalStorage(item.id) ? "yellow" : "gray");
+                await (dispatch as AppDispatch)(getAgences());
             };
             load();
-        }, [])
+        }, [dispatch])
     );
 
     // @ts-ignore
@@ -29,13 +45,13 @@ export default function OneVoitureScreen({route}) {
             <ScrollView style={{width:"100%"}}>
 
                 <View style={{width:"100%", alignItems:"flex-end"}}>
-                    <TouchableWithoutFeedback
+                    <TouchableOpacity
                         onPress={async () => {
                             await toggleItemInStorage(item.id);
                             setFavIconColor(favIconColor === "gray" ? "yellow" : "gray")
                         }}>
                         <Icon name="star" color={favIconColor} size={30} />
-                    </TouchableWithoutFeedback>
+                    </TouchableOpacity>
                 </View>
 
 
@@ -44,34 +60,33 @@ export default function OneVoitureScreen({route}) {
                 <Text style={[styles.text, {marginTop:20}]}>Depuis l'agence</Text>
                 <TextInput
                     style={styles.input}
-                    value=""
-                    placeholder="Ex : Paris"
+                    value={item.agence_name}
+                    editable={false}
                 />
 
                 <Text style={[styles.text, {marginTop:20}]}>Vers l'agence</Text>
-                <TextInput
-                    style={styles.input}
-                    value=""
-                    placeholder="Ex : Lyon"
-                />
+                <Picker style={styles.input}
+                        selectedValue={selectedLanguage}
+                        onValueChange={(itemValue, itemIndex) =>
+                            setSelectedLanguage(itemValue)
+                        }
+                >
+                    {agences.map((item,index) =>  (
+                        <Picker.Item key={index} label={item.ville} value={item.id} />
+                        ))
+                    }
+                </Picker>
 
                 <Text style={[styles.text, {marginTop:20}]}>Location</Text>
-                <View style={[styles.hStack, {justifyContent: "space-between"}]}>
-                    <TextInput
-                        style={[styles.input, {width: "48%"}]}
-                        value=""
-                        placeholder="Ex : 02/12/2023"
-                    />
-                    <TextInput
-                        style={[styles.input, {width: "48%"}]}
-                        value=""
-                        placeholder="Ex : 01/12/2023"
-                    />
-                </View>
+                <DatePicker
+                    mode="calendar"
+                    minimumDate={getToday()}
+                    selected={getToday()}
+                />
 
-                <Pressable style={styles.pressable}>
+                <TouchableOpacity style={[styles.pressable, {marginBottom:40}]}>
                     <Text>LOUER</Text>
-                </Pressable>
+                </TouchableOpacity>
 
 
             </ScrollView>

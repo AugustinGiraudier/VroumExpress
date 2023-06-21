@@ -1,14 +1,11 @@
 import React from 'react';
-import {FlatList, Image, ScrollView, Text, View} from 'react-native';
+import {FlatList, Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 
 import styles from '../styles/main';
-import {TouchableHighlight} from "react-native-gesture-handler";
 import {useDispatch, useSelector} from 'react-redux';
 import {useFocusEffect, useNavigation} from "@react-navigation/native";
 import {AppDispatch} from "../redux/store";
-import {getAgences} from "../redux/actions/AgencesActions";
 import {getVoitures} from "../redux/actions/VoitureActions";
-import Stub from "../Stub/Stub";
 
 
 export default function VoituresScreen({route}) {
@@ -39,7 +36,7 @@ export default function VoituresScreen({route}) {
                               numColumns={2} data={DATA} keyExtractor={item => item.id} renderItem={({item}) =>
 
                         <View style={[styles.semiLightContainer]}>
-                            <TouchableHighlight style={{width:"100%", padding:0, margin:0}} onPress={() => navigation.navigate('Louer une voiture' as never, {item:item} as never)}>
+                            <TouchableOpacity style={{width:"100%", padding:0, margin:0}} onPress={() => navigation.navigate('Louer une voiture' as never, {item:item} as never)}>
                             <View style={[styles.lightContainer, {alignItems: "center"}]}>
                                 <Image style={styles.carImage} source={{uri: item.image}}/>
                                 <View>
@@ -47,7 +44,7 @@ export default function VoituresScreen({route}) {
                                     <Text style={styles.textSecondary}>quantité : 1</Text>
                                 </View>
                             </View>
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         </View>
 
                     }/>

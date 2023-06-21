@@ -1,9 +1,8 @@
 import React, {useRef} from 'react';
-import {FlatList, ScrollView, Text, TextInput, View} from 'react-native';
+import {FlatList, ScrollView, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from '../styles/main';
-import {TouchableHighlight} from "react-native-gesture-handler";
 import {useDispatch, useSelector} from 'react-redux';
 import {useFocusEffect, useNavigation} from "@react-navigation/native";
 import {AppDispatch} from "../redux/store";
@@ -49,7 +48,7 @@ export default function AgencesScreen() {
                     {DATA.length !== 0 &&
                     <FlatList style={{width:"100%"}} scrollEnabled={false} data={DATA} keyExtractor={item => item.id} renderItem={({item}) =>
 
-                        <TouchableHighlight style={{width:"100%", padding:0, margin:0}} onPress={() => navigation.navigate("Voitures disponibles" as never, {items:item.voitures} as never)}>
+                        <TouchableOpacity style={{width:"100%", padding:0, margin:0}} onPress={() => navigation.navigate("Voitures disponibles" as never, {items:item.voitures} as never)}>
                             <View style={styles.lightContainer}>
                                 <View style={styles.hStack}>
                                     <Icon name="home" color={styles.mainContainer.backgroundColor} size={30} />
@@ -59,7 +58,7 @@ export default function AgencesScreen() {
                                     </View>
                                 </View>
                             </View>
-                        </TouchableHighlight>
+                        </TouchableOpacity>
                     }/>}
 
                 </View>
