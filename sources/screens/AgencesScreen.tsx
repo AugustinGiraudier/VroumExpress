@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useFocusEffect, useNavigation} from "@react-navigation/native";
 import {AppDispatch} from "../redux/store";
 import {getAgences} from "../redux/actions/AgencesActions";
+import AgenceListItem from "../components/agenceItem";
 
 export default function AgencesScreen() {
 
@@ -48,17 +49,8 @@ export default function AgencesScreen() {
                     {DATA.length !== 0 &&
                     <FlatList style={{width:"100%"}} scrollEnabled={false} data={DATA} keyExtractor={item => item.id} renderItem={({item}) =>
 
-                        <TouchableOpacity style={{width:"100%", padding:0, margin:0}} onPress={() => navigation.navigate("Voitures disponibles" as never, {agenceId:item.id} as never)}>
-                            <View style={styles.lightContainer}>
-                                <View style={styles.hStack}>
-                                    <Icon name="home" color={styles.mainContainer.backgroundColor} size={30} />
-                                    <View style={{marginLeft:8}}>
-                                        <Text style={styles.title}>{item.ville}</Text>
-                                        <Text style={styles.textSecondary}>quantité : {item.voitures.length}</Text>
-                                    </View>
-                                </View>
-                            </View>
-                        </TouchableOpacity>
+                        <AgenceListItem item={item} navigation={navigation} />
+
                     }/>}
 
                 </View>

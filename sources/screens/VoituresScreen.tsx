@@ -6,6 +6,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useFocusEffect, useNavigation} from "@react-navigation/native";
 import {AppDispatch} from "../redux/store";
 import {getVoitures, getVoituresFromAgence} from "../redux/actions/VoitureActions";
+import VoitureListItem from "../components/voitureItem";
+import Voiture from "../model/Voiture";
 
 
 export default function VoituresScreen({route}) {
@@ -36,21 +38,11 @@ export default function VoituresScreen({route}) {
                     </View>}
 
                     {DATA.length !== 0 &&
-                    <FlatList style={{width:"100%"}} scrollEnabled={false}
-                              numColumns={2} data={DATA} keyExtractor={item => item.id} renderItem={({item}) =>
-
-                        <View style={[styles.semiLightContainer]}>
-                            <TouchableOpacity style={{width:"100%", margin:0}} onPress={() => navigation.navigate('Louer une voiture' as never, {item:item} as never)}>
-                            <View style={[styles.lightContainer, {alignItems: "center"}]}>
-                                <Image style={styles.carImage} source={{uri: item.image}}/>
-                                <View>
-                                    <Text style={styles.title}>{item.marque} {item.modele}</Text>
-                                </View>
-                            </View>
-                            </TouchableOpacity>
-                        </View>
-
-                    }/>}
+                    <FlatList style={{width:"100%"}} scrollEnabled={false} numColumns={2} data={DATA} keyExtractor={item => item.id}
+                        renderItem={({item}) => (
+                             <VoitureListItem item={item} navigation={navigation} />
+                        )}
+                    />}
 
                 </View>
             </ScrollView>
