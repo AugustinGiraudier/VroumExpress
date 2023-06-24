@@ -48,7 +48,7 @@ export default function AgencesScreen() {
                     {DATA.length !== 0 &&
                     <FlatList style={{width:"100%"}} scrollEnabled={false} data={DATA} keyExtractor={item => item.id} renderItem={({item}) =>
 
-                        <TouchableOpacity style={{width:"100%", padding:0, margin:0}} onPress={() => navigation.navigate("Voitures disponibles" as never, {items:item.voitures} as never)}>
+                        <TouchableOpacity style={{width:"100%", padding:0, margin:0}} onPress={() => navigation.navigate("Voitures disponibles" as never, {agenceId:item.id} as never)}>
                             <View style={styles.lightContainer}>
                                 <View style={styles.hStack}>
                                     <Icon name="home" color={styles.mainContainer.backgroundColor} size={30} />

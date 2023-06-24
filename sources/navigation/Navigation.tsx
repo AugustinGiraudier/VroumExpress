@@ -38,7 +38,7 @@ export default function Navigation() {
                            <Icon name="car" color={color} size={size} />
                        ),
                    }}/>
-                <BottomTabNavigator.Screen name="Options" component={OptionsStackNavigation}
+                <BottomTabNavigator.Screen name="OptionsTab" component={OptionsStackNavigation}
                    options={{
                        tabBarIcon: ({ color, size }) => (
                            <Icon name="cog" color={color} size={size} />

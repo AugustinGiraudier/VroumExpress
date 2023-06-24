@@ -50,13 +50,19 @@ export default class Stub {
 
     public getVoitures = () => {
         let voitures : Voiture[] = [];
-        for(const voit of this.voitures){
-            if( getDay(voit.disponible) < getDay()){
-                voitures.push(voit.Clone());
-            }
+        for(const ag of this.agences){
+            voitures.push(...ag.Clone(false).voitures);
         }
         return voitures;
     }
+
+    public getVoituresFromAgence = (agenceId : string) => {
+
+        let ag : Agence = this.agences.find((ag : Agence) => {return ag.id == agenceId});
+        return ag.Clone(false).voitures;
+
+    }
+
     public getAgences = (searchKey : string = "") => {
         let agences : Agence[] = [];
         for(const ag of this.agences){

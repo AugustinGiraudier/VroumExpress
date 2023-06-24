@@ -1,4 +1,4 @@
-import {GET, GET_VOITURES, PUT, UPDATE_VOITURE, VOITURE_ERROR} from "../Constants";
+import {GET, GET_VOITURES, GET_VOITURES_FROM_AGENCE, PUT, UPDATE_VOITURE, VOITURE_ERROR} from "../Constants";
 import {Dispatch} from "redux";
 import {API_ROUTES_MAPPER} from "../ApiRoutes";
 import Voiture from "../../model/Voiture";
@@ -6,6 +6,11 @@ import Stub from "../../Stub/Stub";
 
 export const setVoitures = (data) => ({
     type: GET_VOITURES,
+    payload : data
+})
+
+export const setVoituresFromAgence = (data) => ({
+    type : GET_VOITURES_FROM_AGENCE,
     payload : data
 })
 
@@ -35,6 +40,31 @@ export const getVoitures = () => {
             // Version Stub
             const data = Stub.getInstance().getVoitures();
             dispatch(setVoitures(data));
+        }
+        catch (error) {
+            console.error(error);
+            // @ts-ignore
+            dispatch(setVoituresError(error.message));
+        }
+    }
+}
+
+export const getVoituresFromAgence = (agenceId : string) => {
+    const verb = GET
+    return async (dispatch: Dispatch) => {
+        try {
+            // Version API
+            /*
+            const response = await fetch(API_ROUTES_MAPPER[GET_AGENCES] + "/" + agenceId);
+            if (!response.ok) {
+                throw new Error(`Failed to ${verb}:  ${response.statusText}`);
+            }
+            const data = await response.json();
+            */
+
+            // Version Stub
+            const data = Stub.getInstance().getVoituresFromAgence(agenceId);
+            dispatch(setVoituresFromAgence(data));
         }
         catch (error) {
             console.error(error);

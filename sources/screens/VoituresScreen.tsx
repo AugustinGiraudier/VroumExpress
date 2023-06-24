@@ -5,7 +5,7 @@ import styles from '../styles/main';
 import {useDispatch, useSelector} from 'react-redux';
 import {useFocusEffect, useNavigation} from "@react-navigation/native";
 import {AppDispatch} from "../redux/store";
-import {getVoitures} from "../redux/actions/VoitureActions";
+import {getVoitures, getVoituresFromAgence} from "../redux/actions/VoitureActions";
 
 
 export default function VoituresScreen({route}) {
@@ -13,19 +13,17 @@ export default function VoituresScreen({route}) {
     const navigation = useNavigation()
 
     // @ts-ignore
-    const DATA = route.params ? route.params.items : useSelector(state => state.voituresReducer.voitures)
+    const DATA = useSelector(state => state.voituresReducer.voitures)
     const dispatch: AppDispatch = useDispatch();
 
-    if(!route.params){
-        useFocusEffect(
-            React.useCallback(() => {
-                const load= async () => {
-                    await (dispatch as AppDispatch)(getVoitures());
-                };
-                load();
-            }, [dispatch])
-        );
-    }
+    useFocusEffect(
+        React.useCallback(() => {
+            const load= async () => {
+                await (dispatch as AppDispatch)(route.params ? getVoituresFromAgence(route.params.agenceId) : getVoitures());
+            };
+            load();
+        }, [dispatch])
+    );
 
     return (
         <View style={styles.mainContainer}>
