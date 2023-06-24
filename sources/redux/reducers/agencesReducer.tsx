@@ -2,7 +2,8 @@ import Agence from "../../model/Agence";
 import {AGENCE_ERROR, SET_AGENCES, SWAP_VOITURE_IN_AGENCES} from "../Constants";
 
 const initialState = {
-    agences: []
+    agences: [],
+    error : null
 }
 
 export default function agencesReducer(state = initialState, action){
