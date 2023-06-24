@@ -1,4 +1,4 @@
-import {GET_AGENCES, GET_VOITURES, SWAP_VOITURE_IN_AGENCES, UPDATE_VOITURE} from "./Constants";
+import {SET_AGENCES, SET_VOITURES, SWAP_VOITURE_IN_AGENCES, UPDATE_VOITURE} from "./Constants";
 import {API_BASE_URL} from "../Config";
 
 

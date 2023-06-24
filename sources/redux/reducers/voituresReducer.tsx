@@ -1,5 +1,5 @@
 import Voiture from "../../model/Voiture";
-import {GET_VOITURES, GET_VOITURES_FROM_AGENCE, UPDATE_VOITURE, VOITURE_ERROR} from "../Constants";
+import {SET_VOITURES, SET_VOITURES_FROM_AGENCE, UPDATE_VOITURE, VOITURE_ERROR} from "../Constants";
 
 const initialState = {
     voitures: []
@@ -8,8 +8,8 @@ const initialState = {
 export default function voituresReducer(state = initialState, action){
 
     switch (action.type) {
-        case GET_VOITURES_FROM_AGENCE:
-        case GET_VOITURES:
+        case SET_VOITURES_FROM_AGENCE:
+        case SET_VOITURES:
             return {
                 ...state, voitures: action.payload as Voiture[] || [],
                 error: null,

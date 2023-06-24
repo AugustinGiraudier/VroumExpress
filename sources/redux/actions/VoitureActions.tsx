@@ -1,25 +1,25 @@
-import {GET, GET_VOITURES, GET_VOITURES_FROM_AGENCE, PUT, UPDATE_VOITURE, VOITURE_ERROR} from "../Constants";
+import {GET, SET_VOITURES, SET_VOITURES_FROM_AGENCE, PUT, UPDATE_VOITURE, VOITURE_ERROR} from "../Constants";
 import {Dispatch} from "redux";
 import {API_ROUTES_MAPPER} from "../ApiRoutes";
 import Voiture from "../../model/Voiture";
 import Stub from "../../Stub/Stub";
 
-export const setVoitures = (data) => ({
-    type: GET_VOITURES,
+export const setVoitures = (data : Voiture[]) => ({
+    type: SET_VOITURES,
     payload : data
 })
 
-export const setVoituresFromAgence = (data) => ({
-    type : GET_VOITURES_FROM_AGENCE,
+export const setVoituresFromAgence = (data : Voiture[]) => ({
+    type : SET_VOITURES_FROM_AGENCE,
     payload : data
 })
 
-export const setUpdateVoitures = (data) => ({
+export const setUpdateVoitures = (data : Voiture) => ({
     type: UPDATE_VOITURE,
     payload : data
 })
 
-export const setVoituresError = (data) => ({
+export const setVoituresError = (data : string) => ({
     type: VOITURE_ERROR,
     payload : data
 })

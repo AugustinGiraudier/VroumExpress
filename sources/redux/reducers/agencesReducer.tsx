@@ -1,5 +1,5 @@
 import Agence from "../../model/Agence";
-import {AGENCE_ERROR, GET_AGENCES, SWAP_VOITURE_IN_AGENCES} from "../Constants";
+import {AGENCE_ERROR, SET_AGENCES, SWAP_VOITURE_IN_AGENCES} from "../Constants";
 
 const initialState = {
     agences: []
@@ -7,7 +7,7 @@ const initialState = {
 
 export default function agencesReducer(state = initialState, action){
     switch (action.type) {
-        case GET_AGENCES:
+        case SET_AGENCES:
             return {
                 ...state, agences: action.payload as Agence[] || [],
                 error: null,

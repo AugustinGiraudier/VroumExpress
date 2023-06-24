@@ -1,19 +1,20 @@
-import {AGENCE_ERROR, GET, GET_AGENCES, PUT, SWAP_VOITURE_IN_AGENCES, VOITURE_ERROR} from "../Constants";
+import {AGENCE_ERROR, GET, SET_AGENCES, PUT, SWAP_VOITURE_IN_AGENCES, VOITURE_ERROR} from "../Constants";
 import {Dispatch} from "redux";
 import {API_ROUTES_MAPPER} from "../ApiRoutes";
 import Stub from "../../Stub/Stub";
+import Agence from "../../model/Agence";
 
-export const setAgences = (data) => ({
-    type: GET_AGENCES,
+export const setAgences = (data : Agence[]) => ({
+    type: SET_AGENCES,
     payload : data
 })
 
-export const setSwapVoiture = (data) => ({
+export const setSwapVoiture = (data : Agence[]) => ({
     type: SWAP_VOITURE_IN_AGENCES,
     payload : data
 })
 
-export const setError = (data) => ({
+export const setError = (data : string) => ({
     type: AGENCE_ERROR,
     payload : data
 })
