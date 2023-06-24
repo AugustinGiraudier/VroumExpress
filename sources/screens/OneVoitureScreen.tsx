@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
     Image,
     ScrollView,
@@ -18,16 +18,22 @@ import Voiture from "../model/Voiture";
 import {useDispatch, useSelector} from "react-redux";
 import Agence from "../model/Agence";
 import {AppDispatch} from "../redux/store";
-import {getAgences} from "../redux/actions/AgencesActions";
+import {getAgences, swapVoiture} from "../redux/actions/AgencesActions";
+import {updateVoiture} from "../redux/actions/VoitureActions";
+import {useToast} from "react-native-toast-notifications";
 
 export default function OneVoitureScreen({route}) {
 
     // @ts-ignore
     const agences : Agence[] = useSelector(state => state.agencesReducer.agences);
+    const navigation = useNavigation();
     const item : Voiture = route.params.item;
     const dispatch: AppDispatch = useDispatch();
     const [favIconColor, setFavIconColor] = useState("yellow");
-    const [selectedLanguage, setSelectedLanguage] = useState();
+    const pickerRef = useRef();
+    const [selectedAgence, setSelectedAgence] = useState<string>();
+    const [selectedDate, setSelectedDate] = useState(getToday());
+    const toast = useToast();
 
     useFocusEffect(
         React.useCallback(() => {
@@ -66,9 +72,10 @@ export default function OneVoitureScreen({route}) {
 
                 <Text style={[styles.text, {marginTop:20}]}>Vers l'agence</Text>
                 <Picker style={styles.input}
-                        selectedValue={selectedLanguage}
+                        ref={pickerRef}
+                        selectedValue={selectedAgence}
                         onValueChange={(itemValue, itemIndex) =>
-                            setSelectedLanguage(itemValue)
+                            setSelectedAgence(itemValue)
                         }
                 >
                     {agences.map((item,index) =>  (
@@ -82,12 +89,22 @@ export default function OneVoitureScreen({route}) {
                     mode="calendar"
                     minimumDate={getToday()}
                     selected={getToday()}
+                    onSelectedChange={date => setSelectedDate(date.replaceAll("/","-"))}
                 />
 
-                <TouchableOpacity style={[styles.pressable, {marginBottom:40}]}>
+                <TouchableOpacity style={[styles.pressable, {marginBottom:40}]} onPress={
+                    async () => {
+                        navigation.goBack();
+
+                        // @ts-ignore
+                        let agenceSelectedId = selectedAgence == null ? pickerRef.current.props.children[0].props.value : selectedAgence
+                        await (dispatch as AppDispatch)(updateVoiture(item, selectedDate, agenceSelectedId));
+                        await (dispatch as AppDispatch)(swapVoiture(item.agence_id, agenceSelectedId, item.id));
+                        toast.show("Location réussie !", {type:"success"});
+                    }
+                }>
                     <Text>LOUER</Text>
                 </TouchableOpacity>
-
 
             </ScrollView>
         </View>

@@ -44,13 +44,13 @@ export const getVoitures = () => {
     }
 }
 
-export const updateVoiture = (voiture : Voiture, disponible : string) => {
+export const updateVoiture = (voiture : Voiture, disponible : string, newAgenceID : string) => {
     const verb = PUT
     return async (dispatch: Dispatch) => {
         try {
             // Version Api
             /*
-            const response = await fetch(`${API_ROUTES_MAPPER[UPDATE_VOITURE]}/${voiture.id}/${disponible}`);
+            const response = await fetch(`${API_ROUTES_MAPPER[UPDATE_VOITURE]}/${voiture.id}/${disponible}/${newAgenceID}`);
             if (!response.ok) {
                 throw new Error(`Failed to ${verb}:  ${response.statusText}`);
             }
@@ -58,7 +58,7 @@ export const updateVoiture = (voiture : Voiture, disponible : string) => {
              */
 
             // Version Stub
-            const data = Stub.getInstance().updateVoiture(voiture.id, disponible);
+            const data = Stub.getInstance().updateVoiture(voiture.id, disponible, newAgenceID);
 
             dispatch(setUpdateVoitures(data));
         }

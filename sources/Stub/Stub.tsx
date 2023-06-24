@@ -1,6 +1,7 @@
 import Agence from "../model/Agence";
 import Voiture from "../model/Voiture";
 import getCarImage from "./CarImages";
+import { getToday } from 'react-native-modern-datepicker';
 
 export default class Stub {
 
@@ -38,6 +39,9 @@ export default class Stub {
             new Voiture("5", "Mercedes", "Class c", "2023-06-13", getCarImage(5), "2",'Marseille'),
             new Voiture("6", "Porsche", "Panamera", "2023-06-13", getCarImage(6), "2",'Marseille'),
             new Voiture("7", "Citroen", "DS7", "2023-06-19", getCarImage(7), "2",'Marseille')
+        ]),
+        new Agence('3', 'Aubiere', [
+            new Voiture("8", "Alpine", "A110", "2023-06-23", getCarImage(8), "3",'Aubière'),
         ])
     ]
 
@@ -45,41 +49,48 @@ export default class Stub {
 
     public getVoitures = () => {
         let voitures : Voiture[] = [];
+        let now = new Date();
+        now.setHours(0,0,0,0);
         for(const voit of this.voitures){
-            if(voit.disponible <= new Date()){
-                voitures.push(voit);
+            if(voit.disponible < now){
+                voitures.push(voit.Clone());
             }
         }
         return voitures;
     }
     public getAgences = (searchKey : string = "") => {
-
         let agences : Agence[] = [];
         for(const ag of this.agences){
             if((searchKey === "" || ag.ville.toLowerCase().includes(searchKey.toLowerCase()))){
-                let voitures : Voiture[] = [];
-                for(const voit of ag.voitures){
-                    if(voit.disponible <= new Date()){
-                        voitures.push(voit);
-                    }
-                }
-                agences.push(new Agence(ag.id, ag.ville, voitures));
+                agences.push(ag.Clone(false));
             }
         }
 
         return agences;
     }
 
-    public updateVoiture = (id : string, date : string) => {
+    public updateVoiture = (id : string, date : string, newAgenceID : string) => {
         let newDate = new Date(date);
+        newDate.setHours(0,0,0,0);
 
         if(newDate.toString() == "Invalid Date"){
             return;
         }
 
         let voiture : Voiture = this.voitures.find((voit : Voiture) => { return voit.id == id});
+        let ag = this.agences.find((ag : Agence) => {return ag.id == newAgenceID});
+
+        if(ag === undefined){
+            console.log("undefinedddd");
+            console.log(newAgenceID)
+            console.log(id);
+        }
+
+        voiture.agence_name = ag.ville;
+        voiture.agence_id = newAgenceID;
         voiture.disponible = newDate;
-        return voiture;
+
+        return voiture.Clone();
     }
 
     public swapVoitureBetweenAgences = (agenceSourceID : string, agenceDestID : string, voitureID : string) => {
@@ -104,6 +115,8 @@ export default class Stub {
             if (index > -1) {
                 agenceS.voitures.splice(index, 1);
             }
+
+            return [agenceS.Clone(), agenceD.Clone()];
         }
 
         return [new Agence("-1","",[]),new Agence("-1","",[])];

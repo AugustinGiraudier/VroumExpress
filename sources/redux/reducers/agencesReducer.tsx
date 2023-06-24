@@ -1,6 +1,4 @@
 import Agence from "../../model/Agence";
-import Voiture from "../../model/Voiture";
-import getCarImage from "../../model/Base64CarImage";
 import {AGENCE_ERROR, GET_AGENCES, SWAP_VOITURE_IN_AGENCES} from "../Constants";
 
 const initialState = {
@@ -15,6 +13,7 @@ export default function agencesReducer(state = initialState, action){
                 error: null,
             };
         case SWAP_VOITURE_IN_AGENCES:
+
             return {
                 ...state,
                 agences: state.agences.map(agence =>

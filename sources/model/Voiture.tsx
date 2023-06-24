@@ -1,3 +1,4 @@
+import { getFormatedDate } from 'react-native-modern-datepicker';
 
 export default class Voiture{
 
@@ -9,6 +10,7 @@ export default class Voiture{
         this.modele = modele;
         this.image = image;
         this.disponible = new Date(disponible);
+        this.disponible.setHours(0,0,0,0);
         this.agence_id = agence_id;
         this.agence_name = agence_name;
     }
@@ -20,5 +22,13 @@ export default class Voiture{
     public modele : string;
     public disponible : Date;
     public image : string;
+
+
+    public Clone() : Voiture{
+
+        let date = getFormatedDate(this.disponible, "YYYY-MM-DD");
+        return new Voiture(this.id, this.marque, this.modele, date, this.image, this.agence_id, this.agence_name);
+
+    }
 
 }

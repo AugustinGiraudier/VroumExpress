@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
         marginVertical:3
     },
     semiLightContainer:{
-        width:"50%",
+        width:"48%",
+        marginHorizontal:"1%",
         alignItems: "center",
         paddingVertical:3,
         paddingHorizontal:0

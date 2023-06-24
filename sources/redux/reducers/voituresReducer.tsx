@@ -6,6 +6,7 @@ const initialState = {
 }
 
 export default function voituresReducer(state = initialState, action){
+
     switch (action.type) {
         case GET_VOITURES:
             return {
@@ -15,7 +16,7 @@ export default function voituresReducer(state = initialState, action){
         case UPDATE_VOITURE:
             return {
                 ...state,
-                voitures: state.voitures.map(voiture => voiture.id === (action.payload as Voiture).id ? action.payload as Voiture : voiture),
+                voitures: state.voitures.map(voiture => voiture.id === ((action.payload as Voiture).id) ? action.payload as Voiture : voiture),
                 error: null,
             };
         case VOITURE_ERROR:
