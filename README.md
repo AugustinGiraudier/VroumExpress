@@ -9,7 +9,7 @@
 - dynamic image display
 - redux (actions, store, reducers)
 - asyncStorage (favored cars have a small star on their page)
-- use of stub but api connection system provided
+- use of stub but the api connection system is provided
 - unit tests (actions, reducers and 1 component)
 
 ## Prerequisites
