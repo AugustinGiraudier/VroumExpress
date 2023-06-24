@@ -9,8 +9,7 @@ export default class Voiture{
         this.marque = marque;
         this.modele = modele;
         this.image = image;
-        this.disponible = new Date(disponible);
-        this.disponible.setHours(0,0,0,0);
+        this.disponible = disponible;
         this.agence_id = agence_id;
         this.agence_name = agence_name;
     }
@@ -20,7 +19,7 @@ export default class Voiture{
     public agence_name : string;
     public marque : string;
     public modele : string;
-    public disponible : Date;
+    public disponible : string;
     public image : string;
 
 

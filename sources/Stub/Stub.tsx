@@ -2,6 +2,7 @@ import Agence from "../model/Agence";
 import Voiture from "../model/Voiture";
 import getCarImage from "./CarImages";
 import { getToday } from 'react-native-modern-datepicker';
+import {getDay} from "../utils/DateUtils";
 
 export default class Stub {
 
@@ -49,10 +50,8 @@ export default class Stub {
 
     public getVoitures = () => {
         let voitures : Voiture[] = [];
-        let now = new Date();
-        now.setHours(0,0,0,0);
         for(const voit of this.voitures){
-            if(voit.disponible < now){
+            if( getDay(voit.disponible) < getDay()){
                 voitures.push(voit.Clone());
             }
         }
@@ -65,30 +64,17 @@ export default class Stub {
                 agences.push(ag.Clone(false));
             }
         }
-
         return agences;
     }
 
     public updateVoiture = (id : string, date : string, newAgenceID : string) => {
-        let newDate = new Date(date);
-        newDate.setHours(0,0,0,0);
-
-        if(newDate.toString() == "Invalid Date"){
-            return;
-        }
 
         let voiture : Voiture = this.voitures.find((voit : Voiture) => { return voit.id == id});
         let ag = this.agences.find((ag : Agence) => {return ag.id == newAgenceID});
 
-        if(ag === undefined){
-            console.log("undefinedddd");
-            console.log(newAgenceID)
-            console.log(id);
-        }
-
         voiture.agence_name = ag.ville;
         voiture.agence_id = newAgenceID;
-        voiture.disponible = newDate;
+        voiture.disponible = date;
 
         return voiture.Clone();
     }

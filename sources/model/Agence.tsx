@@ -1,4 +1,5 @@
 import Voiture from "./Voiture";
+import {getDay} from "../utils/DateUtils";
 
 export default class Agence{
 
@@ -15,10 +16,8 @@ export default class Agence{
     public Clone(includeNoAvilable = true) : Agence {
 
         let ag = new Agence(this.id, this.ville, []);
-        let now = new Date();
-        now.setHours(0,0,0,0);
         for(let voit of this.voitures){
-            if(includeNoAvilable || voit.disponible < now){
+            if(includeNoAvilable || getDay(voit.disponible) < getDay()){
                 ag.voitures.push(voit.Clone());
             }
         }

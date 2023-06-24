@@ -32,6 +32,12 @@ export default function VoituresScreen({route}) {
             <ScrollView style={{width:"100%"}}>
                 <Text style={[styles.text, {marginTop:20}]}>Les voitures disponibles</Text>
                 <View style={[styles.container]}>
+
+                    {DATA.length === 0 && <View>
+                        <Text style={{color:"gray"}}>Rien à afficher...</Text>
+                    </View>}
+
+                    {DATA.length !== 0 &&
                     <FlatList style={{width:"100%"}} scrollEnabled={false}
                               numColumns={2} data={DATA} keyExtractor={item => item.id} renderItem={({item}) =>
 
@@ -46,7 +52,8 @@ export default function VoituresScreen({route}) {
                             </TouchableOpacity>
                         </View>
 
-                    }/>
+                    }/>}
+
                 </View>
             </ScrollView>
         </View>
