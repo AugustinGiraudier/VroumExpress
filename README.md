@@ -51,7 +51,7 @@ This template follows a very simple project structure:
 
 Explaination|Light Theme|Dark Theme|
 |:---------:|:---------:|:--------:|
-Screen where you can find an agency by name|<img src="./Docs/sketch-agences-light.png" height="600" style="margin:20px">|<img src="./Docs/sketch-agences-dark.png" height="600" style="margin:20px">|
+Screen where you can find an agency by name|<img src="./Docs/sketch-agences-light.png" style="margin:20px; height:600px; width:450px">|<img src="./Docs/sketch-agences-dark.png" height="600" width="450" style="margin:20px">|
 Screen where you can see all cars available in the selected agency|<img src="./Docs/sketch-one-agence-light.png" height="600" style="margin:20px">|<img src="./Docs/sketch-one-agence-dark.png" height="600" style="margin:20px">|
 Screen to see the car and rent it|<img src="./Docs/sketch-one-car-light.png" height="600" style="margin:20px">|<img src="./Docs/sketch-one-car-dark.png" height="600" style="margin:20px">|
 Screen to see all available cars|<img src="./Docs/sketch-cars-light.png" height="600" style="margin:20px">|<img src="./Docs/sketch-cars-dark.png" height="600" style="margin:20px">|
